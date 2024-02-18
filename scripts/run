@@ -45,7 +45,7 @@ trap finish SIGTERM SIGINT SIGQUIT
 # Allow an individual host temporarily:
 # tmp_allow_host HOST PORT
 tmp_allow_host () {
-    IP=$(getent hosts $1 | awk '{ print $1 }' | head -1)
+    IP=$(getent ahosts $1 | awk '{ print $1 }' | head -1)
     echo "Allowing to communicate with $IP"
     iptables -A OUTPUT -p tcp --dport $2 --destination $IP  -j ACCEPT
 }
